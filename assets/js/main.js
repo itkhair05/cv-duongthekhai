@@ -1,4 +1,3 @@
-// Hàm toggle menu điều hướng trên thiết bị di động
 function myMenuFunction() {
     var menuBtn = document.getElementById("myNavMenu");
     if (menuBtn.className === "nav-menu") {
@@ -8,7 +7,6 @@ function myMenuFunction() {
     }
 }
 
-// Chuyển đổi giao diện sáng/tối
 const themeToggle = document.getElementById('theme-toggle');
 const themeInput = themeToggle.querySelector('input');
 themeInput.addEventListener('change', () => { 
@@ -17,7 +15,6 @@ themeInput.addEventListener('change', () => {
     updateParticles(isDarkTheme);
 });
 
-// Điều khiển phát/tạm dừng nhạc nền
 const musicToggle = document.getElementById('music-toggle');
 const backgroundMusic = document.getElementById('background-music');
 let isPlaying = false; 
@@ -70,80 +67,84 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.5 }); 
 sections.forEach(section => observer.observe(section));
 
-// Hiệu ứng gõ chữ tự động với Typed.js
 var typingEffect = new Typed(".typedText", {
     strings: ["Dương Thế Khải"], 
     loop: true, 
-    typeSpeed: 100, 
-    backSpeed: 80, 
+    typeSpeed: 90, 
+    backSpeed: 70, 
     backDelay: 2000 
 });
 
 const sr = ScrollReveal({
     origin: 'top', 
-    distance: '80px', 
-    duration: 2000, 
+    distance: '60px', 
+    duration: 1800, 
     reset: true 
 });
 
-// Áp dụng hiệu ứng reveal cho các phần tử với các tùy chỉnh riêng
 sr.reveal('.featured-text', {}); 
-sr.reveal('.avatar-container', {delay: 300, duration: 1500, origin: 'bottom'});
+sr.reveal('.avatar-container', {delay: 200, duration: 1400, origin: 'bottom'});
 sr.reveal('.top-header', {}); 
-sr.reveal('.skills-box', {interval: 200}); 
-sr.reveal('.hobby-box', {interval: 200}); 
-sr.reveal('.project-box', {interval: 200}); 
-sr.reveal('.certificate-box', {interval: 200}); 
-sr.reveal('.row', {interval: 200}); 
+sr.reveal('.skills-box', {interval: 150}); 
+sr.reveal('.hobby-box', {interval: 150}); 
+sr.reveal('.project-box', {interval: 150}); 
+sr.reveal('.certificate-box', {interval: 150}); 
+sr.reveal('.journey-box', {
+  delay: 200,
+  interval: 150,
+  duration: 1000,
+  distance: '20px', // Giảm khoảng cách trượt
+  origin: 'bottom' // Thay đổi hướng trượt từ dưới lên
+});
+sr.reveal('.row', {interval: 150}); 
+sr.reveal('.contact-box', {interval: 150});
 
-// Khởi tạo hiệu ứng nghiêng 3D với VanillaTilt
 VanillaTilt.init(document.querySelector('.hexagon-frame'), {
-    max: 15, 
-    speed: 400, 
+    max: 12, 
+    speed: 300, 
     glare: true, 
-    'max-glare': 0.4 
+    'max-glare': 0.3 
 });
 
-// Hàm khởi tạo và cập nhật particles.js
 function updateParticles(isDarkTheme) {
     particlesJS('avatar-particles', {
         particles: {
-            number: { value: 100, density: { enable: true, value_area: 600 } }, // Maintained dense particle count
+            number: { value: 120, density: { enable: true, value_area: 400 } }, // Increased number, reduced value_area for density
             color: { 
                 value: isDarkTheme 
-                    ? ['#6e57e0', '#00c9ff', '#ff4b8b', '#ffffff'] // Vibrant for dark theme
-                    : ['#6e57e0', '#00c9ff', '#ff4b8b', '#444444'] // Muted for light theme
+                    ? ['#2b6cb0', '#4fd1c5', '#ffffff'] 
+                    : ['#2b6cb0', '#4fd1c5', '#2d3748'] 
             },
             shape: { 
-                type: ['circle', 'triangle'], // Mixed shapes for variety
+                type: ['circle', 'triangle'], 
                 stroke: { width: 0, color: '#000000' },
                 polygon: { nb_sides: 5 }
             },
             opacity: { 
-                value: 0.6, 
+                value: 0.5, 
                 random: true, 
-                anim: { enable: true, speed: 0.8, opacity_min: 0.2, sync: false } // Gentle fade
+                anim: { enable: true, speed: 0.7, opacity_min: 0.15, sync: false }
             },
             size: { 
-                value: 3.5, // Increased particle size for larger particles
+                value: 5, // Increased size for larger particles
                 random: true, 
-                anim: { enable: true, speed: 1.5, size_min: 0.8, sync: false } // Adjusted min size
+                anim: { enable: true, speed: 1.2, size_min: 1, sync: false } // Adjusted size_min
             },
             line_linked: {
                 enable: true,
-                distance: 80, // Reduced distance for denser connections
-                color: isDarkTheme ? '#ffffff' : '#555555', // Theme-adaptive lines
-                opacity: 0.4, // Slightly increased opacity for visibility
-                width: 0.7 // Thin lines for elegance
+                distance: 90,
+                color: isDarkTheme ? '#e2e8f0' : '#4a5568',
+                opacity: 0.3,
+                width: 0.6
             },
             move: { 
                 enable: true, 
-                speed: 2.5, // Slower for calm effect
+                speed: 2, 
                 direction: 'none', 
                 random: true, 
                 straight: false, 
                 out_mode: 'bounce', 
-                attract: { enable: true, rotateX: 800, rotateY: 1200 }
+                attract: { enable: true, rotateX: 700, rotateY: 1000 }
             }
         },
         interactivity: {
@@ -154,14 +155,22 @@ function updateParticles(isDarkTheme) {
                 resize: true 
             },
             modes: {
-                grab: { distance: 150, line_linked: { opacity: 0.4 } }, // Subtle grab effect
-                push: { particles_nb: 3 } // Moderate particle addition
+                grab: { distance: 140, line_linked: { opacity: 0.3 } },
+                push: { particles_nb: 2 }
             }
         },
         retina_detect: true
     });
 }
-
-// Khởi tạo particles.js với theme ban đầu
 const isDarkTheme = document.body.classList.contains('dark-theme');
 updateParticles(isDarkTheme);
+
+// Handle form submission feedback
+const formButton = document.querySelector('.form-button .btn');
+formButton.addEventListener('click', () => {
+    const feedback = document.getElementById('form-feedback');
+    feedback.style.display = 'block';
+    setTimeout(() => {
+        feedback.style.display = 'none';
+    }, 3000);
+});
