@@ -2,16 +2,16 @@
 
 /* ----- VARIABLES ----- */
 :root {
-   --body-color: linear-gradient(135deg, #ede6ff, #d9f3f0);
-   --header-bg: linear-gradient(135deg, #d6caff, #c7eae6);
+    --body-color: linear-gradient(135deg, #ede6ff, #d9f3f0);
+    --header-bg: linear-gradient(135deg, #d6caff, #c7eae6);
     --color-white: #ffffff;
     --text-color-second: #2d3748;
     --text-color-third: #6c63ff;
-   --first-color: #a278ff;
+    --first-color: #a278ff;
     --first-color-hover: #4a3aff;
-   --second-color: #5eaefd;
+    --second-color: #5eaefd;
     --third-color: #ff512f;
-    --first-shadow-color: rgba(0, 0, 0, 0.1);
+    --first-shadow-color: rgba(0, 255, 255, 0.3);
     --text-color-gray: #718096;
     --footer-bg: linear-gradient(135deg, #dbcfff, #ccece9);
     /* Dark theme variables */
@@ -554,7 +554,7 @@ input:checked + .slider:before {
     border-radius: 50%;
     background: linear-gradient(135deg, var(--first-color), var(--second-color));
     color: var(--color-white);
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 3px 8px rgba(0, 255, 255, 0.3);
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -578,7 +578,7 @@ input:checked + .slider:before {
 }
 .icon:hover {
     transform: scale(1.1);
-    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 12px rgba(0, 255, 255, 0.3);
 }
 .icon i {
     font-size: 22px;
@@ -720,7 +720,7 @@ h3 {
 }
 .about-info:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px var(--first-shadow-color), 0 0 15px var(--first-shadow-color);
 }
 .about-info p {
     text-align: center;
@@ -731,15 +731,40 @@ h3 {
 }
 
 /* ----- SKILLS BOX ----- */
+.skills-container{
+    display: grid;                       /* grid thay cho flex */
+    grid-template-columns: repeat(3, 1fr); /* 3 cột bằng nhau trên PC */
+    gap: 24px;
+    margin-top: 20px;
+    width: 100%;                         /* chiếm trọn chiều ngang cột cha */
+}
+
+/* Tablet – xuống 2 cột */
+@media (max-width: 992px){
+    .skills-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile – xuống 1 cột */
+@media (max-width: 768px){
+    .skills-container{
+        grid-template-columns: 1fr;
+        max-width: 90%;                  /* cho đẹp, bo hai bên */
+        margin-inline: auto;
+    }
+}
+
+/* Box vẫn giữ style gốc, KHÔNG khai báo trùng lần thứ 2 */
 .skills-box {
     position: relative;
-    margin: 8px;
-    background: var(--color-white);
     padding: 18px;
     border-radius: 12px;
+    margin: 0;
+    background: var(--color-white);
     box-shadow: 0 6px 8px var(--first-shadow-color);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 .skills-box::after {
     content: "";
@@ -753,8 +778,8 @@ h3 {
     z-index: 1;
 }
 .skills-box:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 10px 20px var(--first-shadow-color), 0 0 15px var(--first-shadow-color);
 }
 .skills-box:hover::after {
     bottom: 0;
@@ -849,12 +874,12 @@ h3 {
     background: linear-gradient(135deg, var(--first-color), var(--second-color));
     width: 100%;
     height: 100%;
-    transition: .4s;
+    transition: 0.4s;
     z-index: 1;
 }
 .hobby-box:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 10px 20px var(--first-shadow-color), 0 0 15px var(--first-shadow-color);
 }
 .hobby-box:hover::after {
     bottom: 0;
@@ -906,8 +931,8 @@ h3 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .project-box:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 10px 20px var(--first-shadow-color), 0 0 15px var(--first-shadow-color);
 }
 .project-box>i {
     font-size: 40px;
@@ -953,6 +978,7 @@ h3 {
 .project-box:hover::after {
     bottom: 0;
 }
+
 .project-box:hover i,
 .project-box:hover h3,
 .project-box:hover p,
@@ -986,8 +1012,8 @@ h3 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .certificate-box:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 10px 20px var(--first-shadow-color), 0 0 15px var(--first-shadow-color);
 }
 .certificate-box>i {
     font-size: 40px;
@@ -1048,8 +1074,8 @@ h3 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .journey-box:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 10px 20px var(--first-shadow-color), 0 0 15px var(--first-shadow-color);
 }
 .journey-box>i {
     font-size: 40px;
@@ -1134,7 +1160,7 @@ h3 {
 }
 .contact-info:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px var(--first-shadow-color), 0 0 15px var(--first-shadow-color);
 }
 .contact-info>h2 {
     color: var(--color-white);
@@ -1184,7 +1210,7 @@ h3 {
 }
 .input-field:focus {
     border-color: var(--first-color);
-    box-shadow: 0 0 8px rgba(51, 243, 224, 0.2);
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
 }
 .input-field::placeholder,
 textarea::placeholder {
@@ -1204,7 +1230,7 @@ textarea {
 }
 textarea:focus {
     border-color: var(--first-color);
-    box-shadow: 0 0 8px rgba(79, 209, 197, 0.2);
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
 }
 .form-button>.btn {
     display: flex;
@@ -1216,7 +1242,7 @@ textarea:focus {
 .form-button>.btn:hover {
     background: linear-gradient(135deg, var(--first-color), var(--second-color));
     transform: translateY(-2px);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 12px rgba(0, 255, 255, 0.3);
 }
 .form-button i {
     font-size: 16px;
@@ -1280,7 +1306,7 @@ footer {
 }
 .footer-social-icons .icon:hover {
     transform: scale(1.1);
-    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 12px rgba(0, 255, 255, 0.3);
 }
 .bottom-footer {
     font-size: 13px;
@@ -1402,6 +1428,9 @@ footer {
 
 /* ----- MEDIA QUERY == 540px / RESPONSIVE ----- */
 @media only screen and (max-width: 540px) {
+    .social_icons {
+        justify-content: center;
+    }
     .featured-name {
         font-size: 36px;
     }
