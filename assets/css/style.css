@@ -7,9 +7,9 @@
     --color-white: #ffffff;
     --text-color-second: #2d3748;
     --text-color-third: #6c63ff;
-    --first-color: #a278ff;
-    --first-color-hover: #4a3aff;
-    --second-color: #5eaefd;
+    --first-color: #a278ff; /* Light mode gradient color 1 (purple) */
+    --first-color-hover: #4a3aff; /* Light mode hover color */
+    --second-color: #5eaefd; /* Light mode gradient color 2 (cyan) */
     --third-color: #ff512f;
     --first-shadow-color: rgba(0, 255, 255, 0.3);
     --text-color-gray: #718096;
@@ -19,9 +19,9 @@
     --color-white-dark: #2a2a3d;
     --text-color-second-dark: #e2e8f0;
     --text-color-gray-dark: #a0aec0;
-    --first-color-dark: #ff512f;
-    --first-color-hover-dark: #dd2476;
-    --second-color-dark: #dd2476;
+   --first-color-dark: #7c3aed; /* Softer purple for dark mode */
+    --first-color-hover-dark: #a78bfa; /* Lighter purple for hover in dark mode */
+    --second-color-dark: #38bdf8; /* Softer teal for dark mode */
     --footer-bg-dark: linear-gradient(135deg, #1a1033, #1c2526);
 }
 /* ----- DARK THEME ----- */
@@ -1183,6 +1183,98 @@ h3 {
 .contact-info:hover p,
 .contact-info:hover i {
     z-index: 2;
+}
+/* ----- SOCIAL ICONS (GLOBAL) ----- */
+.social_icons,
+.contact-social,
+.footer-social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--first-color), var(--second-color));
+    color: var(--color-white);
+    box-shadow: 0 3px 8px rgba(0, 255, 255, 0.3);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    z-index: 2; /* Ensure icons are above other elements */
+}
+
+.icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3); /* Ripple effect */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.icon:hover::before {
+    width: 90px;
+    height: 90px;
+}
+
+.icon:hover {
+    background: linear-gradient(135deg, var(--first-color-hover), var(--second-color)); /* Hover gradient for light mode */
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 255, 255, 0.4); /* Stronger shadow on hover */
+}
+
+.icon i {
+    font-size: 22px;
+    z-index: 3; /* Ensure icon content is above pseudo-elements */
+}
+
+/* Specific tweaks for contact-info social icons to ensure visibility */
+.contact-info .contact-social .icon {
+    border: 2px solid var(--color-white); /* White border for contrast in light mode */
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3); /* Stronger shadow for depth */
+}
+
+.contact-info .contact-social .icon:hover {
+    border-color: var(--color-white); /* Maintain border on hover */
+    box-shadow: 0 6px 14px rgba(0, 255, 255, 0.5); /* Enhanced hover shadow */
+}
+
+/* Dark theme adjustments for all social icons */
+.dark-theme .icon {
+    background: linear-gradient(135deg, var(--first-color-dark), var(--second-color-dark)); /* Softer gradient for dark mode */
+    color: var(--color-white);
+    box-shadow: 0 3px 8px rgba(0, 255, 255, 0.3); /* Light shadow for dark theme */
+}
+
+.dark-theme .icon:hover {
+    background: linear-gradient(135deg, var(--first-color-hover-dark), var(--second-color-dark)); /* Softer hover gradient for dark mode */
+    box-shadow: 0 5px 12px rgba(0, 255, 255, 0.3); /* Stronger shadow on hover */
+}
+
+.dark-theme .contact-info .contact-social .icon {
+    border: 2px solid var(--color-white-dark); /* Dark theme border */
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3); /* Light shadow for depth */
+}
+
+.dark-theme .contact-info .contact-social .icon:hover {
+    border-color: var(--color-white); /* White border on hover for consistency */
+    box-shadow: 0 6px 14px rgba(0, 255, 255, 0.3); /* Enhanced hover shadow */
+}
+
+/* Ensure z-index for contact-info section */
+.contact-info .contact-social {
+    margin-top: 20px;
+    z-index: 3; /* Above contact-info background */
 }
 
 /* ----- CONTACT FORM ----- */
