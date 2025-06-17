@@ -157,7 +157,7 @@ i {
 body {
     background: var(--body-color);
     position: relative;
-    cursor: url('assets/cursors/cursor.cur'), auto;
+    cursor: url('assets/cursors/cursor.png'), auto;
 }
 body::before {
     content: '';
