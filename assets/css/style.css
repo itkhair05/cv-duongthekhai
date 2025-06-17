@@ -157,7 +157,7 @@ i {
 body {
     background: var(--body-color);
     position: relative;
-    cursor: url('https://itkhair05.github.io/cv-duongthekhai/assets/cursors/cursor.png'), auto;
+    cursor: url('../cursors/cursor.png'), auto;
 }
 body::before {
     content: '';
