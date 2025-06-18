@@ -3,7 +3,8 @@
 /* ----- VARIABLES ----- */
 :root {
     --body-color: linear-gradient(135deg, #ede6ff, #d9f3f0);
-    --header-bg: linear-gradient(135deg, #d6caff, #c7eae6);
+    /* --header-bg: linear-gradient(135deg, #d6caff, #c7eae6); */
+    --header-bg: #c2e9f8;
     --color-white: #ffffff;
     --text-color-second: #2d3748;
     --text-color-third: #6c63ff;
@@ -11,9 +12,10 @@
     --first-color-hover: #4a3aff; /* Light mode hover color */
     --second-color: #5eaefd; /* Light mode gradient color 2 (cyan) */
     --third-color: #ff512f;
-    --first-shadow-color: rgba(0, 255, 255, 0.3);
+    --first-shadow-color: rgba(0, 128, 255, 0.2);
     --text-color-gray: #718096;
-    --footer-bg: linear-gradient(135deg, #dbcfff, #ccece9);
+    --footer-bg:#c2e9f8;
+    /* --footer-bg: linear-gradient(135deg, #dbcfff, #ccece9); */
     /* Dark theme variables */
     --body-color-dark: linear-gradient(135deg, #1a1033, #1c2526);
     --color-white-dark: #2a2a3d;
@@ -31,6 +33,7 @@
     --text-color-second: var(--text-color-second-dark);
     --text-color-gray: var(--text-color-gray-dark);
     --footer-bg: var(--footer-bg-dark);
+    --header-bg: var(--footer-bg-dark);
 }
 
 .dark-theme .about-info,
@@ -87,7 +90,11 @@
     border-color: var(--text-color-gray-dark);
     color: var(--text-color-second-dark);
 }
-
+.dark-theme .form-control .input-field:focus,
+.dark-theme .form-control textarea:focus {
+    border-color: var(--second-color);
+    box-shadow: 0 0 8px rgba(0, 128, 255, 0.2);
+}
 .dark-theme .form-control .input-field::placeholder,
 .dark-theme .form-control textarea::placeholder {
     color: var(--text-color-gray-dark);
@@ -159,7 +166,7 @@ body {
     position: relative;
     cursor: url('../cursors/cursor.png'), auto;
 }
-body::before {
+/* body::before {
     content: '';
     position: absolute;
     top: 0;
@@ -169,7 +176,7 @@ body::before {
     background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
     opacity: 0.05;
     z-index: -1;
-}
+} */
 .container {
     width: 100%;
     position: relative;
@@ -193,7 +200,6 @@ body::before {
     z-index: 2;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(105, 137, 137, 0.3);
     box-sizing: border-box;
     border: 2px solid white; /* Viền trắng 2px */
 }
@@ -207,14 +213,13 @@ body::before {
     height: 100%;
     background: linear-gradient(135deg, var(--first-color-hover), var(--second-color));
     z-index: -1;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s ease;
 }
 
 .github-btn:hover {
     transform: translateY(-3px);
-    border-color: white; /* Viền rõ khi hover */
-    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.5);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
 }
 
 .github-btn:hover::before {
@@ -239,10 +244,10 @@ nav {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 80px;
-    line-height: 80px;
-    background: var(--body-color);
-    padding-inline: 8vw;
+    height: 70px;
+    line-height: 70px;
+    background: var(--header-bg);
+    padding-inline: 5vw;
     transition: .3s;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -257,7 +262,7 @@ nav::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, var(--first-color), var(--second-color));
+    background: var(--body-color);
     animation: neonGlow 3s infinite alternate;
 }
 @keyframes neonGlow {
@@ -276,7 +281,7 @@ nav::after {
 .nav-link {
     text-decoration: none;
     color: var(--text-color-second);
-    font-weight: 500;
+    font-weight: 600;
     padding-inline: 15px;
     margin-inline: 15px;
     position: relative;
@@ -740,11 +745,6 @@ input:checked + .slider:before {
             0 0 45px rgba(255, 0, 240, 0.6);
     }
 }
-tôi muốn led chạy xung quanh
-/* .avatar-container:hover .hexagon-frame::before {
-    animation: gradientBorder 4s linear infinite;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
-} */
 .avatar-container:hover .hexagon-frame {
     box-shadow: 0 0 25px var(--second-color), 0 0 50px var(--first-color);
     transform: scale(1.03);
@@ -778,12 +778,12 @@ tôi muốn led chạy xung quanh
     color: var(--text-color-second);
     background: var(--color-white);
     border-radius: 25px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 128, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .scroll-btn:hover {
     transform: translateX(-50%) translateY(-4px);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 3px 12px rgba(0, 128, 255, 0.2);
 }
 .scroll-btn i {
     font-size: 18px;
@@ -1434,8 +1434,8 @@ h3 {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .input-field:focus {
-    border-color: var(--first-color);
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+    border-color: var(--second-color);
+    box-shadow: 0 0 8px rgba(0, 128, 255, 0.2);
 }
 .input-field::placeholder,
 textarea::placeholder {
@@ -1454,8 +1454,8 @@ textarea {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 textarea:focus {
-    border-color: var(--first-color);
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+    border-color: var(--second-color);
+    box-shadow: 0 0 8px rgba(0, 128, 255, 0.2);
 }
 .form-button>.btn {
     display: flex;
@@ -1499,7 +1499,7 @@ footer {
 .footer_menu_list a {
     text-decoration: none;
     color: var(--text-color-second);
-    font-weight: 500;
+    font-weight: 600;
     margin-inline: 15px;
     position: relative;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -1562,26 +1562,41 @@ footer {
 }
 
 /* ----- MEDIA QUERY == 900px / RESPONSIVE ----- */
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 950px) {
     .nav-menu.responsive {
         left: 0;
     }
     .nav-menu {
         position: fixed;
-        top: 80px;
+        top: 70px; /* Điều chỉnh theo height mới của nav */
         left: -100%;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.8);
+        justify-content: flex-start; /* Thay đổi từ center thành flex-start */
+        align-items: flex-start;
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(15px);
         width: 100%;
-        min-height: 400px;
-        height: 85vh;
+        height: calc(100vh - 70px); /* Tính toán chiều cao dựa trên nav height */
+        padding: 20px;
+        overflow-y: auto; /* Cho phép scroll nếu nội dung dài */
         transition: .3s;
     }
     .nav_menu_list {
         flex-direction: column;
+        width: 100%;
+    }
+    .nav-link {
+        height: auto; /* Bỏ height cố định */
+        line-height: 1.5;
+        padding: 15px 0;
+        margin: 0;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .nav-link::before {
+        display: none; /* Ẩn hiệu ứng gạch chân trên mobile */
     }
     .nav-menu-btn {
         display: flex;
@@ -1589,8 +1604,8 @@ footer {
         justify-content: center;
     }
     .nav-controls {
-        display: flex;
-        align-items: center;
+        margin-left: auto; /* Đẩy các control sang bên phải */
+        padding-left: 15px;
     }
     .featured-box {
         flex-direction: column;
@@ -1619,11 +1634,11 @@ footer {
         height: 240px;
     }
     .hexagon-frame {
-        width: 180px; /* Adjusted for larger avatar */
+        width: 185px; /* Adjusted for larger avatar */
         height: 200px;
     }
     .avatar-img {
-        width: 160px; /* Adjusted for larger avatar */
+        width: 155px; /* Adjusted for larger avatar */
         height: 180px;
     }
     .row {
@@ -1676,11 +1691,95 @@ footer {
         height: 200px;
     }
     .hexagon-frame {
-        width: 140px; /* Adjusted for larger avatar */
+        width: 145px; /* Adjusted for larger avatar */
         height: 160px;
     }
     .avatar-img {
         width: 120px; /* Adjusted for larger avatar */
         height: 140px;
+    }
+}
+/* ----- RAIN BACKGROUND EFFECT ----- */
+.rain-container {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.rain-container::before {
+    content: "";
+    position: absolute;
+    inset: -145%;
+    rotate: -45deg;
+    background: var(--body-color);
+    background-image: 
+        radial-gradient(4px 100px at 0px 235px, #00d4ff, transparent),
+        radial-gradient(4px 100px at 300px 235px, #00d4ff, transparent),
+        radial-gradient(1.5px 1.5px at 150px 117.5px, #00d4ff 100%, transparent 150%),
+        radial-gradient(4px 100px at 0px 252px, #6b00ff, transparent),
+        radial-gradient(4px 100px at 300px 252px, #6b00ff, transparent),
+        radial-gradient(1.5px 1.5px at 150px 126px, #6b00ff 100%, transparent 150%);
+    background-size: 
+        300px 235px,
+        300px 235px,
+        300px 235px,
+        300px 252px,
+        300px 252px,
+        300px 252px;
+    animation: rainAnimation 150s linear infinite;
+    opacity: 0.25; /* Tăng độ đậm */
+    filter: brightness(1.3) contrast(1.5); /* Tăng sáng và độ tương phản */
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(107, 0, 255, 0.2); /* Hiệu ứng glow */
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark theme adjustments */
+.dark-theme .rain-container::before {
+    content: "";
+    position: absolute;
+    inset: -145%;
+    rotate: -45deg;
+    background: var(--body-color-dark);
+    background-image: 
+        radial-gradient(4px 100px at 0px 235px, #00ffcc, transparent),
+        radial-gradient(4px 100px at 300px 235px, #00ffcc, transparent),
+        radial-gradient(1.5px 1.5px at 150px 117.5px, #00ffcc 100%, transparent 150%),
+        radial-gradient(4px 100px at 0px 252px, #a100e6, transparent),
+        radial-gradient(4px 100px at 300px 252px, #a100e6, transparent),
+        radial-gradient(1.5px 1.5px at 150px 126px, #a100e6 100%, transparent 150%);
+    background-size: 
+        300px 235px,
+        300px 235px,
+        300px 235px,
+        300px 252px,
+        300px 252px,
+        300px 252px;
+    animation: rainAnimation 150s linear infinite;
+    opacity: 0.25;
+    filter: brightness(1.3) contrast(1.5);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3), 0 0 40px rgba(161, 0, 230, 0.2);
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+@keyframes rainAnimation {
+    0% {
+        background-position: 
+            0px 220px,
+            3px 220px,
+            151.5px 337.5px,
+            25px 24px,
+            28px 24px,
+            176.5px 150px;
+    }
+    100% {
+        background-position: 
+            0px 6800px,
+            3px 6800px,
+            151.5px 6917.5px,
+            25px 13632px,
+            28px 13632px,
+            176.5px 13758px;
     }
 }
