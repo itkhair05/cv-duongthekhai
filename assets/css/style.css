@@ -986,57 +986,101 @@ h3 {
     gap: 18px;
     width: 100%;
 }
+
+/* --- FLIP EFFECT --- */
 .hobby-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 18px;
-    background: var(--color-white);
-    border-radius: 12px;
-    box-shadow: 0 6px 8px var(--first-shadow-color);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+    width: 100%;
+    height: 200px;
 }
-.hobby-box::after {
-    content: "";
-    position: absolute;
-    bottom: -100%;
-    background: linear-gradient(135deg, var(--first-color), var(--second-color));
+
+.flip-container {
+    position: relative;
     width: 100%;
     height: 100%;
-    transition: 0.4s;
-    z-index: 1;
+    transition: transform 0.7s ease;
+    transform-style: preserve-3d;
 }
-.hobby-box:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 10px 20px var(--first-shadow-color), 0 0 15px var(--first-shadow-color);
+
+.hobby-box:hover .flip-container {
+    transform: rotateY(180deg);
 }
-.hobby-box:hover::after {
-    bottom: 0;
+
+/* FRONT & BACK COMMON STYLE */
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 8px var(--first-shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    transition: all 0.3s ease;
 }
-.hobby-box:hover i,
-.hobby-box:hover h3,
-.hobby-box:hover p {
-    color: var(--color-white);
+
+/* FRONT SIDE */
+.front {
+    background: var(--color-white);
+    flex-direction: column;
+    text-align: center;
     z-index: 2;
 }
-.hobby-box i {
+
+.front i {
     font-size: 36px;
     color: var(--second-color);
     margin-bottom: 12px;
-    transition: color 0.3s ease;
 }
-.hobby-box h3 {
+
+.front h3 {
     font-size: 16px;
     font-weight: 600;
+    color: var(--text-color-second);
 }
-.hobby-box p {
+
+.front p {
     font-size: 13px;
     color: var(--text-color-gray);
-    text-align: center;
     margin-top: 8px;
 }
+
+/* BACK SIDE */
+.back {
+    background: var(--color-white);
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+
+.back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    border: 2px solid rgb(8, 166, 245);
+}
+
+.hobby-box:hover .back img {
+    transform: scale(1.05);
+}
+
+/* DARK MODE SUPPORT */
+.dark-theme .front,
+.dark-theme .back {
+    background: var(--color-white-dark);
+}
+
+.dark-theme .front h3 {
+    color: var(--text-color-second-dark);
+}
+
+.dark-theme .front p {
+    color: var(--text-color-gray-dark);
+}
+
 
 /* ----- PROJECTS BOX ----- */
 .project-container {
