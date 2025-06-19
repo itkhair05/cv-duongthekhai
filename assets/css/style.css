@@ -1604,114 +1604,151 @@ footer {
 
 /* ----- MEDIA QUERY == 900px / RESPONSIVE ----- */
 @media only screen and (max-width: 990px) {
-    .nav-menu.responsive {
-        left: 0;
-    }
     .nav-menu {
         position: fixed;
-        top: 70px; /* Điều chỉnh theo height mới của nav */
+        top: 70px;
         left: -100%;
         flex-direction: column;
-        justify-content: flex-start; /* Thay đổi từ center thành flex-start */
+        justify-content: flex-start;
         align-items: flex-start;
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(15px);
         width: 100%;
-        height: calc(100vh - 70px); /* Tính toán chiều cao dựa trên nav height */
+        height: calc(100vh - 70px);
         padding: 20px;
-        overflow-y: auto; /* Cho phép scroll nếu nội dung dài */
-        transition: .3s;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        z-index: 999;
     }
+
     .dark-theme .nav-menu {
-        background: rgba(42, 42, 61, 0.95); /* Adjusted dark theme background */
+        background: rgba(42, 42, 61, 0.95);
     }
+
+    .nav-menu.responsive {
+        left: 0;
+    }
+
     .nav_menu_list {
         flex-direction: column;
         width: 100%;
     }
+
     .nav-link {
-        height: auto; /* Bỏ height cố định */
-        line-height: 1.5;
-        padding: 15px 0;
-        margin: 0;
         display: block;
         width: 100%;
+        padding: 15px 0;
+        margin: 0;
+        height: auto;
+        line-height: 1.5;
         border-bottom: 1px solid rgba(0,0,0,0.1);
     }
-    
+
     .nav-link::before {
-        display: none; /* Ẩn hiệu ứng gạch chân trên mobile */
+        display: none;
     }
+
     .nav-menu-btn {
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 1000;
     }
+
     .nav-controls {
-        margin-left: auto; /* Đẩy các control sang bên phải */
+        margin-left: auto;
         padding-left: 15px;
     }
+
+    /* Trang chủ (featured-box) */
     .featured-box {
         flex-direction: column;
         justify-content: center;
-        height: 100vh;
+        height: auto;
     }
+
     .featured-text {
         width: 100%;
         order: 2;
         justify-content: center;
         align-content: flex-start;
         min-height: 55vh;
+        text-align: center;
+        padding: 0 20px;
     }
+
     .social_icons {
         margin-top: 1.5em;
+        justify-content: center;
     }
+
     .featured-image {
         order: 1;
         justify-content: center;
         min-height: 140px;
         width: 100%;
-        margin-top: 60px;
+        margin-top: 40px;
     }
+
     .avatar-container {
-        width: 240px; /* Adjusted for larger avatar */
+        width: 240px;
         height: 240px;
+        margin: auto;
     }
+
     .hexagon-frame {
-        width: 185px; /* Adjusted for larger avatar */
+        width: 185px;
         height: 200px;
     }
+
     .avatar-img {
-        width: 155px; /* Adjusted for larger avatar */
+        width: 155px;
         height: 180px;
     }
+
     .row {
         display: flex;
         flex-direction: column;
         justify-content: center;
         gap: 40px;
     }
+
     .col {
         display: flex;
         justify-content: center;
         width: 100%;
     }
+
     .about-info, .contact-info, .certificate-box, .journey-box {
         width: 100%;
+        padding: 0 20px;
     }
+
     .project-container {
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
+
     .project-box {
-        width: 85%;
+        width: 90%;
     }
+
     .hobbies-container {
+        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 18px;
+        padding: 0 10px;
     }
+
     .about-info img {
         max-width: 90%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
     }
 }
+
 
 /* ----- MEDIA QUERY == 540px / RESPONSIVE ----- */
 @media only screen and (max-width: 540px) {
