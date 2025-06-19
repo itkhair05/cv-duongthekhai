@@ -560,7 +560,7 @@ input:checked + .slider:before {
     position: absolute;
     width: 0;
     height: 2px;
-    background: var(--first-color);
+    background: var(--second-color);
     transition: width 0.3s ease;
 }
 .featured-name p::before {
@@ -1914,4 +1914,72 @@ footer {
             28px 13632px,
             176.5px 13758px;
     }
+}
+.neon-name {
+  font-family: 'Orbitron', 'Black Ops One', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  background: linear-gradient(
+    90deg,
+    #7b91ff 0%,     /* xanh tím dịu */
+    #8fd3f4 25%,    /* xanh thiên thanh nhạt */
+    #5eaefd 50%,    /* xanh pastel */
+    #9c9efd 75%,    /* tím lạnh nhẹ */
+    #7b91ff 100%    /* lặp lại tông */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation:
+    neonFlow 6s linear infinite,
+    pulseGlow 2s ease-in-out infinite alternate;
+  display: inline-block;
+  letter-spacing: 2px;
+}
+
+/* Animation nền trượt */
+@keyframes neonFlow {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Hiệu ứng ánh sáng neon mềm mại */
+@keyframes pulseGlow {
+  0% {
+    text-shadow:
+      0 0 3px rgba(126, 150, 255, 0.2),
+      0 0 6px rgba(94, 174, 253, 0.15);
+  }
+  100% {
+    text-shadow:
+      0 0 8px rgba(94, 174, 253, 0.5),
+      0 0 16px rgba(126, 150, 255, 0.4),
+      0 0 24px rgba(156, 158, 253, 0.3);
+  }
+}
+.neon-intro {
+  font-family: 'Orbitron', 'Black Ops One', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  background: linear-gradient(
+    90deg,
+    #98c1ff,
+    #a0e9ff,
+    #bdbdfc
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: neonFlow 6s linear infinite;
+  display: inline-block;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 2px rgba(126, 150, 255, 0.2),
+    0 0 4px rgba(94, 174, 253, 0.1);
 }
