@@ -1965,7 +1965,4 @@ footer {
   animation: neonFlow 6s linear infinite;
   display: inline-block;
   letter-spacing: 2px;
-  text-shadow:
-    0 0 2px rgba(126, 150, 255, 0.2),
-    0 0 4px rgba(94, 174, 253, 0.1);
 }
